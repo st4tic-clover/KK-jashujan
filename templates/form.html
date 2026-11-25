@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ title }}</h1>
+<form method="post" class="card">
+  <div class="grid">
+    {% for f, label in fields %}<label>{{ label }}<input name="{{ f }}" value="{{ values[f] if values and values[f] is not none else '' }}"></label>{% endfor %}
+  </div>
+  <hr>
+  <button class="btn primary">Simpan</button>
+  <a class="btn" href="{{ back }}">Batal</a>
+</form>
+{% endblock %}

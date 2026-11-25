@@ -1,0 +1,30 @@
+:root{--bg:#f6f7f9;--fg:#1c2330;--muted:#6b7280;--card:#fff;--line:#e3e6ec;--accent:#2f5bea;--danger:#c93a3a}
+@media (prefers-color-scheme:dark){:root{--bg:#14171d;--fg:#e8eaf0;--muted:#9aa3b2;--card:#1d222b;--line:#2d3440;--accent:#6c8cff;--danger:#ff6b6b}}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--fg)}
+header{display:flex;gap:2rem;align-items:center;padding:.8rem 1.5rem;background:var(--card);border-bottom:1px solid var(--line)}
+nav a{margin-right:1rem;color:var(--fg);text-decoration:none;font-weight:500}
+main{max-width:1200px;margin:0 auto;padding:1.5rem}
+a{color:var(--accent)} .muted{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem}
+.flash{padding:.7rem 1rem;border-radius:8px;margin-bottom:1rem;border:1px solid var(--line)}
+.flash.ok{border-color:#2e9d5b}.flash.error{border-color:var(--danger)}
+.btn{display:inline-block;padding:.45rem .9rem;border:1px solid var(--line);border-radius:7px;background:var(--card);color:var(--fg);text-decoration:none;cursor:pointer;font:inherit}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.danger{color:var(--danger);border-color:var(--danger)}
+.btn.small{padding:.2rem .55rem;font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.7rem}
+label{display:flex;flex-direction:column;font-size:13px;color:var(--muted);gap:.2rem}
+input{padding:.45rem .6rem;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg);font:inherit}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:1.5rem;align-items:start}
+.preview{position:sticky;top:1rem}.preview img{width:100%;border:1px solid var(--line);border-radius:8px}
+fieldset.member{border:1px solid var(--line);border-radius:8px;margin:0 0 .8rem;padding:.8rem}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line)}
+th,td{padding:.5rem .7rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:middle}
+th{background:var(--bg);font-size:13px}
+.actions{white-space:nowrap}.actions form,form.inline{display:inline}
+.search{display:flex;gap:.5rem;margin-bottom:1rem}.search input{flex:1}
+dl{display:grid;grid-template-columns:auto 1fr;gap:.3rem 1rem;margin:0 0 1rem}dt{color:var(--muted)}dd{margin:0}
+hr{border:0;border-top:1px solid var(--line);margin:1rem 0}
+@media(max-width:900px){.split{grid-template-columns:1fr}.preview{position:static}}

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Upload Kartu Keluarga</h1>
+<p class="muted">Unggah foto/scan KK. Data dibaca otomatis, lalu Anda bisa mengoreksinya sebelum disimpan.</p>
+<form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data" class="card">
+  <input type="file" name="image" accept="image/png,image/jpeg,image/webp" required>
+  <button class="btn primary">Baca KK</button>
+</form>
+{% endblock %}

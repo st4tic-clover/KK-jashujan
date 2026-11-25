@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% macro member(m) %}
+<fieldset class="member">
+  <legend>Anggota <button type="button" class="btn danger small" onclick="this.closest('fieldset').remove()">Hapus baris</button></legend>
+  <div class="grid">
+    {% for f, label in anggota_fields %}
+      <label>{{ label }}<input name="a_{{ f }}" value="{{ m.get(f, '') }}"></label>
+    {% endfor %}
+  </div>
+</fieldset>
+{% endmacro %}
+{% block content %}
+<h1>Konfirmasi Hasil Pembacaan</h1>
+<p class="muted">Periksa dan koreksi data di bawah (bandingkan dengan gambar), lalu simpan.</p>
+<div class="split">
+  <div class="preview">
+    {% if image_file %}<img src="{{ url_for('uploaded', name=image_file) }}" alt="KK">{% endif %}
+  </div>
+  <form method="post" action="{{ url_for('save') }}">
+    <input type="hidden" name="image_file" value="{{ image_file }}">
+    <h2>Identitas KK</h2>
+    <div class="grid">
+      {% for f, label in kk_fields %}
+        <label>{{ label }}<input name="{{ f }}" value="{{ kk.get(f, '') }}" {% if f == 'no_kk' %}required{% endif %}></label>
+      {% endfor %}
+    </div>
+    <h2>Anggota Keluarga</h2>
+    <div id="members">
+      {% for m in anggota %}{{ member(m) }}{% endfor %}
+    </div>
+    <template id="tpl">{{ member({}) }}</template>
+    <button type="button" class="btn" onclick="document.getElementById('members').appendChild(document.getElementById('tpl').content.cloneNode(true))">+ Tambah anggota</button>
+    <hr>
+    <button class="btn primary">Simpan ke database</button>
+    <a class="btn" href="{{ url_for('upload_page') }}">Batal</a>
+  </form>
+</div>
+{% endblock %}
